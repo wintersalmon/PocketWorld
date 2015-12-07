@@ -44,7 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChoiceMachineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoiceMachineForm.Designer.cs">
+      <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoinIncomeManager.cs" />
+    <Compile Include="ChoiceMachine.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +62,9 @@
     <Compile Include="player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChoiceMachineForm.resx">
+      <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

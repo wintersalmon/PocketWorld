@@ -9,14 +9,20 @@ namespace PocketWorld
     class CoinIncomeManager
     {
         private Player itsPlayer;
+        private int itsUpgradeCostMultiplier;
+        private int itsUpgradeIncomeAdder;
 
         public CoinIncomeManager()
         {
+            itsUpgradeCostMultiplier = 100;
+            itsUpgradeIncomeAdder = 1;
             itsPlayer = null;
         }
 
         public CoinIncomeManager(Player _player)
         {
+            itsUpgradeCostMultiplier = 100;
+            itsUpgradeIncomeAdder = 1;
             itsPlayer = _player;
         }
 
@@ -34,23 +40,48 @@ namespace PocketWorld
             {
                 itsPlayer.GainIncome();
             }
-            else
-            {
-                return;
-            }
         }
 
         public void UpgradeIncome(int upValue)
         {
             if (hasPlayer())
             {
-                int newUpValue = itsPlayer.CurIncome + upValue;
-                itsPlayer.CurIncome = newUpValue;
+                int upgradeCost = getNextUpgradeCost();
+                int upgradeIncome = getNextUpgradeIncome();
+                if (itsPlayer.Coin >= upgradeCost)
+                {
+                    itsPlayer.IncomeLevel += 1;
+                    itsPlayer.Coin -= upgradeCost;
+                    itsPlayer.Income = upgradeIncome;
+                }
             }
-            else
+        }
+
+        public int getCurIncome()
+        {
+            if (hasPlayer())
             {
-                return;
+                return itsPlayer.Income;
             }
+            return 0;
+        }
+
+        public int getNextUpgradeCost()
+        {
+            if (hasPlayer())
+            {
+                return itsPlayer.IncomeLevel * itsUpgradeCostMultiplier;
+            }
+            return 0;
+        }
+
+        public int getNextUpgradeIncome()
+        {
+            if (hasPlayer())
+            {
+                return itsPlayer.IncomeLevel + itsUpgradeIncomeAdder;
+            }
+            return 0;
         }
     }
 }

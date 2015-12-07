@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
 
 namespace PocketWorld
 {
@@ -10,8 +12,16 @@ namespace PocketWorld
     {
         private String itsId;
         private String itsPw;
-        private int itsCurCoin;
+        private int itsCoin;
         private int itsIncome;
+        private int itsIncomeLevel;
+        private int itsMobCnt;
+        private List<int> itsMobIdList;
+
+        public Player()
+        {
+            itsMobIdList = new List<int>();
+        }
 
         public String ItsId
         {
@@ -25,21 +35,36 @@ namespace PocketWorld
             set { itsPw = value; }
         }
 
-        public int CurCoin
+        public int Coin
         {
-            get { return itsCurCoin; }
-            set { itsCurCoin = value; }
+            get { return itsCoin; }
+            set { itsCoin = value; }
         }
 
-        public int CurIncome
+        public int Income
         {
             get { return itsIncome; }
             set { itsIncome = value; }
         }
 
-        public void GainIncome() { itsCurCoin += itsIncome; }
-        public void IncreaseCoin(int inc) {itsCurCoin += inc;}
-        public void DecreaseCoin(int dec) {itsCurCoin -= dec;}
+        public int IncomeLevel
+        {
+            get { return itsIncomeLevel; }
+            set { itsIncomeLevel = value; }
+        }
+
+        public int MobCnt
+        {
+            get { return itsMobCnt; }
+            set { itsMobCnt = value; }
+        }
+
+        public void AddMobId(int id) { itsMobIdList.Add(id); }
+        public List<int> getMobIdList() { return itsMobIdList; }
+        
+        public void GainIncome() { itsCoin += itsIncome; }
+        public void IncreaseCoin(int inc) {itsCoin += inc;}
+        public void DecreaseCoin(int dec) {itsCoin -= dec;}
 
         public void IncreaseIncome(int inc) { itsIncome += inc; }
         public void DecreaseIncome(int dec) { itsIncome -= dec; }
