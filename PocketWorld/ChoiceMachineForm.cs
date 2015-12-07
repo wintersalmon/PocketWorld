@@ -12,14 +12,15 @@ namespace PocketWorld
 {
     public partial class ChoiceMachineForm : Form
     {
-        private List<ChoiceMachine> itsMachineList;
+        private ChoiceMachine itsMachine;
         private Player itsPlayer;
+        private List<ChoiceMachine> itsChoiceMachineList;
 
-        public ChoiceMachineForm(Player player, List<ChoiceMachine> machineList)
+        public ChoiceMachineForm(Player itsPlayer, List<ChoiceMachine> itsChoiceMachineList)
         {
-            InitializeComponent();
-            itsPlayer = player;
-            itsMachineList = machineList;
+            // TODO: Complete member initialization
+            this.itsPlayer = itsPlayer;
+            this.itsChoiceMachineList = itsChoiceMachineList;
         }
     }
 }

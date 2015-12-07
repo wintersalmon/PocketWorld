@@ -99,7 +99,7 @@ namespace PocketWorld
 
         private void btnDrawMob_Click(object sender, EventArgs e)
         {
-
+            choiceMachineFrm.ShowDialog(this);
         }
     }
 }
