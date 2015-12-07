@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,30 @@ namespace PocketWorld
             itsPlayer.getMobIdList().Add(11);
             itsPlayer.getMobIdList().Add(12);
 
-            itsCoinManager = new CoinIncomeManager(itsPlayer);
             itsChoiceMachineList = new List<ChoiceMachine>();
 
-            choiceMachineFrm = new ChoiceMachineForm(itsPlayer, itsChoiceMachineList);
+            for (int i=0, cost = 100; i<6; i++, cost *= cost)
+            {
+                itsChoiceMachineList.Add(new ChoiceMachine(i + 1, cost, 5, 30));
+            }
+            
+            itsCoinManager = new CoinIncomeManager(itsPlayer);
+
+            choiceMachineFrm = new ChoiceMachineForm(6);
+            choiceMachineFrm.ItsPlayer = itsPlayer;
+
+            for(int i=0; i< itsChoiceMachineList.Count; i++)
+            {
+                choiceMachineFrm.SetChoiceMachine(i, itsChoiceMachineList[i]);
+            }
+
+            for (int mIdx = 0; mIdx < itsChoiceMachineList.Count; mIdx++)
+            {
+                for (int count = 1 ; count < 10; count++)
+                {
+                    itsChoiceMachineList[mIdx].AddMobId(count);
+                }
+            }
 
             UpdateScreen();
         }

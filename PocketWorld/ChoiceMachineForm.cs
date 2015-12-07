@@ -12,15 +12,68 @@ namespace PocketWorld
 {
     public partial class ChoiceMachineForm : Form
     {
-        private ChoiceMachine itsMachine;
         private Player itsPlayer;
-        private List<ChoiceMachine> itsChoiceMachineList;
+        private ChoiceMachine [] itsMachineArr;
 
-        public ChoiceMachineForm(Player itsPlayer, List<ChoiceMachine> itsChoiceMachineList)
+        public ChoiceMachineForm(int size)
         {
-            // TODO: Complete member initialization
-            this.itsPlayer = itsPlayer;
-            this.itsChoiceMachineList = itsChoiceMachineList;
+            InitializeComponent();
+            this.ItsPlayer = ItsPlayer;
+            itsMachineArr = new ChoiceMachine[size];
+        }
+
+        public Player ItsPlayer
+        {
+            get
+            {
+                return itsPlayer;
+            }
+
+            set
+            {
+                itsPlayer = value;
+            }
+        }
+
+        public void SetChoiceMachine(int idx, ChoiceMachine machine)
+        {
+            if (idx < 0 || idx >= itsMachineArr.Length) return;
+            itsMachineArr[idx] = machine;
+        }
+
+        private void ChoiceMachineForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnMachineLv01_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[0].getRandomMobId().ToString();
+        }
+
+        private void btnMachineLv02_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[1].getRandomMobId().ToString();
+        }
+
+        private void btnMachineLv03_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[2].getRandomMobId().ToString();
+        }
+
+        private void btnMachineLv04_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[3].getRandomMobId().ToString();
+        }
+
+        private void btnMachineLv05_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[4].getRandomMobId().ToString();
+        }
+
+        private void btnMachineLv06_Click(object sender, EventArgs e)
+        {
+            lblOutResult.Text = itsMachineArr[5].getRandomMobId().ToString();
         }
     }
 }

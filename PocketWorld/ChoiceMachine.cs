@@ -3,42 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace PocketWorld
 {
-    class ChoiceMachine
+    public class ChoiceMachine
     {
         private int itsRareLevel;
         private int itsCost;
         private int itsRareProbability;
         private int itsCostIncreasePercent;
         private List<int> itsMobIdList;
+        private Random itsRandomGenerator;
 
-        ChoiceMachine(int rareLevel, int cost, int probability, int costIncrase)
+        public ChoiceMachine(int rareLevel, int cost, int probability, int costIncrase)
         {
             itsRareLevel = rareLevel;
             itsCost = cost;
             itsRareProbability = probability;
             itsCostIncreasePercent = costIncrase;
             itsMobIdList = new List<int>();
+            itsRandomGenerator = new Random();
         }
 
-        void AddMobIdList(List<int> inputList)
+        public int RareLevel
+        {
+            get
+            {
+                return itsRareLevel;
+            }
+
+            set
+            {
+                itsRareLevel = value;
+            }
+        }
+
+        public void AddMobIdList(List<int> inputList)
         {
             itsMobIdList.AddRange(inputList);
         }
 
-        void AddMobId(int id)
+        public void AddMobId(int id)
         {
             itsMobIdList.Add(id);
         }
 
-        private int getRandomMobId()
+        public int getRandomMobId()
         {
             int mobId = 0;
-
-            // caculate random mob id
+            int size = itsMobIdList.Count;
+            if(size > 0)
+            {
+                int selectIdx = itsRandomGenerator.Next(0, size);
+                mobId = itsMobIdList[selectIdx];
+            }
 
             return mobId;
         }
