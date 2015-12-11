@@ -19,7 +19,7 @@ namespace PocketWorld
 
         private ChoiceMachineForm choiceMachineFrm;
 
-
+        private Mob myTestMob;
         public PocketWorld()
         {
             InitializeComponent();
@@ -61,6 +61,8 @@ namespace PocketWorld
             }
 
             UpdateScreen();
+
+
         }
 
         private void PocketWorld_Load(object sender, EventArgs e)
@@ -103,6 +105,9 @@ namespace PocketWorld
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
             lblIncomeResult.Text = "";
+            myTestMob = new Mob(1, "my", 0, 0, 0, "Hello");
+
+            mainPanel.Controls.Add(myTestMob);
         }
 
         private void mainPanel_MouseDown(object sender, MouseEventArgs e)

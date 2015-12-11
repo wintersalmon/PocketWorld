@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PocketWorld
 {
-    public class Mob
+    public class Mob : System.Windows.Forms.PictureBox
     {
         private int itsId;
         private String itsName;
         private int itsRare;
         private int itsColor;
         private int itsGainMoney;
-        private int itsGainMoneyExplain;
+        private String itsGainMoneyExplain;
+        private String itsImageIdStr;
 
-        public Mob()
-        {
-        }
-
-        public Mob(int _itsId, String _itsName, int _itsRare, int _itsColor, int _itsGainmoney, int _itsGainMoneyExplain)
+        public Mob(int _itsId, String _itsName, int _itsRare, int _itsColor, int _itsGainmoney, String _itsGainMoneyExplain)
         {
             this.itsId = _itsId;
             this.itsName = _itsName;
@@ -27,6 +25,15 @@ namespace PocketWorld
             this.itsColor = _itsColor;
             this.itsGainMoney = _itsGainmoney;
             this.itsGainMoneyExplain = _itsGainMoneyExplain;
+
+            itsImageIdStr = "_" + itsId;
+            SetImage((Image)Properties.Resources.ResourceManager.GetObject(itsImageIdStr));
+        }
+
+        private void SetImage(System.Drawing.Image img)
+        {
+            this.Image = img;
+            this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
         }
 
 
@@ -55,7 +62,7 @@ namespace PocketWorld
             get { return itsGainMoney; }
             set { itsGainMoney = value; }
         }
-        public int ItsGainMoneyExplain
+        public String ItsGainMoneyExplain
         {
             get { return itsGainMoneyExplain; }
             set { itsGainMoneyExplain = value; }

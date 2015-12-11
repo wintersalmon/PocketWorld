@@ -82,7 +82,7 @@
             // lblCoin
             // 
             this.lblCoin.AutoSize = true;
-            this.lblCoin.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblCoin.Font = new System.Drawing.Font("굴림", 14F);
             this.lblCoin.Location = new System.Drawing.Point(3, 10);
             this.lblCoin.Name = "lblCoin";
             this.lblCoin.Size = new System.Drawing.Size(85, 19);
@@ -92,7 +92,7 @@
             // lblIncome
             // 
             this.lblIncome.AutoSize = true;
-            this.lblIncome.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblIncome.Font = new System.Drawing.Font("굴림", 14F);
             this.lblIncome.Location = new System.Drawing.Point(94, 10);
             this.lblIncome.Name = "lblIncome";
             this.lblIncome.Size = new System.Drawing.Size(85, 19);
@@ -102,7 +102,7 @@
             // lblOutputCoin
             // 
             this.lblOutputCoin.AutoSize = true;
-            this.lblOutputCoin.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblOutputCoin.Font = new System.Drawing.Font("굴림", 14F);
             this.lblOutputCoin.Location = new System.Drawing.Point(69, 34);
             this.lblOutputCoin.Name = "lblOutputCoin";
             this.lblOutputCoin.Size = new System.Drawing.Size(19, 19);
@@ -112,7 +112,7 @@
             // lblOutputIncome
             // 
             this.lblOutputIncome.AutoSize = true;
-            this.lblOutputIncome.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblOutputIncome.Font = new System.Drawing.Font("굴림", 14F);
             this.lblOutputIncome.Location = new System.Drawing.Point(160, 34);
             this.lblOutputIncome.Name = "lblOutputIncome";
             this.lblOutputIncome.Size = new System.Drawing.Size(19, 19);
@@ -142,7 +142,7 @@
             // lblIncomeResult
             // 
             this.lblIncomeResult.AutoSize = true;
-            this.lblIncomeResult.Font = new System.Drawing.Font("Gulim", 15F);
+            this.lblIncomeResult.Font = new System.Drawing.Font("굴림", 15F);
             this.lblIncomeResult.Location = new System.Drawing.Point(94, 80);
             this.lblIncomeResult.Name = "lblIncomeResult";
             this.lblIncomeResult.Size = new System.Drawing.Size(30, 20);
@@ -152,7 +152,7 @@
             // lblNextIncomeCost
             // 
             this.lblNextIncomeCost.AutoSize = true;
-            this.lblNextIncomeCost.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblNextIncomeCost.Font = new System.Drawing.Font("굴림", 14F);
             this.lblNextIncomeCost.Location = new System.Drawing.Point(185, 10);
             this.lblNextIncomeCost.Name = "lblNextIncomeCost";
             this.lblNextIncomeCost.Size = new System.Drawing.Size(148, 19);
@@ -162,7 +162,7 @@
             // lblNextIncomeValue
             // 
             this.lblNextIncomeValue.AutoSize = true;
-            this.lblNextIncomeValue.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblNextIncomeValue.Font = new System.Drawing.Font("굴림", 14F);
             this.lblNextIncomeValue.Location = new System.Drawing.Point(339, 10);
             this.lblNextIncomeValue.Name = "lblNextIncomeValue";
             this.lblNextIncomeValue.Size = new System.Drawing.Size(167, 19);
@@ -172,7 +172,7 @@
             // lblOutputNextIncomeCost
             // 
             this.lblOutputNextIncomeCost.AutoSize = true;
-            this.lblOutputNextIncomeCost.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblOutputNextIncomeCost.Font = new System.Drawing.Font("굴림", 14F);
             this.lblOutputNextIncomeCost.Location = new System.Drawing.Point(278, 34);
             this.lblOutputNextIncomeCost.Name = "lblOutputNextIncomeCost";
             this.lblOutputNextIncomeCost.Size = new System.Drawing.Size(19, 19);
@@ -182,7 +182,7 @@
             // lblOutputNextIncomeValue
             // 
             this.lblOutputNextIncomeValue.AutoSize = true;
-            this.lblOutputNextIncomeValue.Font = new System.Drawing.Font("Gulim", 14F);
+            this.lblOutputNextIncomeValue.Font = new System.Drawing.Font("굴림", 14F);
             this.lblOutputNextIncomeValue.Location = new System.Drawing.Point(451, 34);
             this.lblOutputNextIncomeValue.Name = "lblOutputNextIncomeValue";
             this.lblOutputNextIncomeValue.Size = new System.Drawing.Size(19, 19);
