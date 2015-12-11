@@ -62,6 +62,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="player.cs" />
+    <Compile Include="PlayerDBConnectManager.cs" />
+    <Compile Include="Pocketmon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChoiceMachineForm.resx">
@@ -94,10 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mycat.gif" />
+    <None Include="Resources\1.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1.gif" />
+    <None Include="Resources\mycat.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

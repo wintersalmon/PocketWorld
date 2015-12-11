@@ -8,77 +8,158 @@ namespace PocketWorld
 {
     public class ChoiceMachine
     {
-        private int itsRareLevel;
-        private int itsCost;
-        private int itsRareProbability;
-        private int itsCostIncreasePercent;
-        private List<int> itsMobIdList;
-        private Random itsRandomGenerator;
+        private int machineId;
+        private int rankNormal;
+        private int rankRare;
+        private int chanceRare;
+        private int startCost;
+        private double costIncMultiplier;
+        private int[] normalMonIdArray;
+        private int[] rareMonIdArray;
+        private Random randUnit;
 
-        public ChoiceMachine(int rareLevel, int cost, int probability, int costIncrase)
+        ChoiceMachine()
         {
-            itsRareLevel = rareLevel;
-            itsCost = cost;
-            itsRareProbability = probability;
-            itsCostIncreasePercent = costIncrase;
-            itsMobIdList = new List<int>();
-            itsRandomGenerator = new Random();
+            normalMonIdArray = null;
+            rareMonIdArray = null;
+            randUnit = new Random();
         }
 
-        public int RareLevel
+        public int SpinForRandomMonId()
+        {
+            int selectedMonId = -1;
+
+ 
+            if (normalMonIdArray != null && randUnit.Next(0, ChanceRare) > 0)
+            {
+                int index = randUnit.Next(0, normalMonIdArray.Length);
+                selectedMonId = normalMonIdArray[index];
+            }
+            else if(rareMonIdArray != null)
+            {
+                int index = randUnit.Next(0, rareMonIdArray.Length);
+                selectedMonId = rareMonIdArray[index];
+            }
+
+            return selectedMonId;
+        }
+        public int CalculateSpinCost(int monCnt)
+        {
+            double cost = startCost;
+            for (int i = 0; i < monCnt; i++)
+            {
+                cost *= costIncMultiplier;
+            }
+
+            int resultCost = (int) cost;
+
+
+            return resultCost;
+        }
+
+        public int MachineId
         {
             get
             {
-                return itsRareLevel;
+                return machineId;
             }
 
             set
             {
-                itsRareLevel = value;
+                machineId = value;
             }
         }
 
-        public void AddMobIdList(List<int> inputList)
+        public int RankNormal
         {
-            itsMobIdList.AddRange(inputList);
-        }
-
-        public void AddMobId(int id)
-        {
-            itsMobIdList.Add(id);
-        }
-
-        public int getRandomMobId()
-        {
-            int mobId = 0;
-            int size = itsMobIdList.Count;
-            if(size > 0)
+            get
             {
-                int selectIdx = itsRandomGenerator.Next(0, size);
-                mobId = itsMobIdList[selectIdx];
+                return rankNormal;
             }
 
-            return mobId;
+            set
+            {
+                rankNormal = value;
+            }
         }
 
-        public bool BuyRandomMob(Player buyer)
+        public int RankRare
         {
-            if(buyer == null) return false;
-
-            int mobCnt  = buyer.MobCnt;
-            int mobCost = itsCost + mobCnt * itsCostIncreasePercent;
-            int mobId = getRandomMobId();
-
-            if (buyer.Coin >= mobCost)
+            get
             {
-                buyer.Coin -= mobCost;
-                buyer.AddMobId(mobId);
-                return true;
+                return rankRare;
             }
-            else
+
+            set
             {
-                return false;
+                rankRare = value;
             }
         }
+
+        public int ChanceRare
+        {
+            get
+            {
+                return chanceRare;
+            }
+
+            set
+            {
+                chanceRare = value;
+            }
+        }
+
+        public int StartCost
+        {
+            get
+            {
+                return startCost;
+            }
+
+            set
+            {
+                startCost = value;
+            }
+        }
+
+        public double CostIncMultiplier
+        {
+            get
+            {
+                return costIncMultiplier;
+            }
+
+            set
+            {
+                costIncMultiplier = value;
+            }
+        }
+
+        public int[] NormalMonIdArray
+        {
+            get
+            {
+                return normalMonIdArray;
+            }
+
+            set
+            {
+                normalMonIdArray = value;
+            }
+        }
+
+        public int[] RareMonIdArray
+        {
+            get
+            {
+                return rareMonIdArray;
+            }
+
+            set
+            {
+                rareMonIdArray = value;
+            }
+        }
+        
     }
 }
