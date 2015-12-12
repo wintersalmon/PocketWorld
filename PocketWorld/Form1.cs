@@ -59,7 +59,6 @@ namespace PocketWorld
 
             if (db.initConnectionWithPlayer("salmonjoon@gmail.com", "1234") == true)
                 MessageBox.Show(db.GetPlayer().Id + "," + db.GetPlayer().Pw + "," + db.GetPlayer().Coin + "," + db.GetPlayer().IncomeLevel);
-
         }
 
         private void btnIncCoin_Click(object sender, EventArgs e)

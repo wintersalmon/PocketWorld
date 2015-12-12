@@ -10,7 +10,6 @@ namespace PocketWorld
 {
     class PlayerDBConnectManager
     {
-        bool bIsConnected;
         private Player itsPlayer;
 
         private List<Pocketmon> itsPlayerPocketmonList;
@@ -19,7 +18,6 @@ namespace PocketWorld
 
         public PlayerDBConnectManager()
         {
-            bIsConnected = false;
             itsPlayer = null;
             itsPlayerPocketmonList = null;
             itsChoiceMachineList = null;
@@ -35,7 +33,6 @@ namespace PocketWorld
         {
             if ( LoadPlayer(player_id, player_pw) )
             {
-                return true;
                 if (LoadChoiceMachineList() && LoadPlayerPocketmonList(player_id))
                 {
                     return true;
@@ -76,19 +73,85 @@ namespace PocketWorld
             return bSucces;
         }
 
-        private bool SavePlayer(Player _player)
+        public bool SavePlayer()
         {
-            return true;
+            String sql = "update Player set possess_coin=@coin, income_level=@level where player_id=@id;";
+            bool bSucces = false;
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+                        comm.Prepare();
+                        comm.Parameters.AddWithValue("@coin", itsPlayer.Coin);
+                        comm.Parameters.AddWithValue("@level", itsPlayer.IncomeLevel);
+                        comm.Parameters.AddWithValue("@id", itsPlayer.Id);
+
+                        comm.ExecuteNonQuery();
+
+                        bSucces = true;
+                    }
+                }
+            }
+
+            return bSucces;
         }
 
-        private int CreatePlayerPocketmon(int mon_id)
+        public int CreatePlayerPocketmon(int mon_id)    // NEED TEST
         {
-            return 0;
+            String sql = "insert into Pocketmon(mon_id,player_id) values(@mon_id, @player_id)";
+            int pocketmonId= -1;
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+                        comm.Prepare();
+                        comm.Parameters.AddWithValue("@mon_id", itsPlayer.Coin);
+                        comm.Parameters.AddWithValue("@player_id", itsPlayer.IncomeLevel);
+
+                        comm.ExecuteNonQuery();
+
+                        pocketmonId = (int) comm.LastInsertedId;
+                    }
+                }
+            }
+
+            return pocketmonId;
         }
 
-        private int DeletePlayerPocketmon(int pocketmon_id)
+        public bool DeletePlayerPocketmon(int pocketmon_id)
         {
-            return 0;
+            String sql = "delete from Pocketmon where pocketmon_id=@pocketmon_id;";
+            bool bSucces = false;
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+                        comm.Prepare();
+                        comm.Parameters.AddWithValue("@pocketmon_id", pocketmon_id);
+
+                        comm.ExecuteNonQuery();
+
+                        bSucces = true;
+                    }
+                }
+            }
+
+            return bSucces;
         }
 
         private int SelectPlayerOwnedPocketmonCountByLevel(int level)
@@ -136,7 +199,7 @@ namespace PocketWorld
         /* 접속 정보를 시스템이 사용하기 위해 만든 getter checker 들 */
         public bool isPlayerLoaded()
         {
-            return bIsConnected;
+            return (itsPlayer != null) ? true : false;
         }
 
         public Player GetPlayer() {
