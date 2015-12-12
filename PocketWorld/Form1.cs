@@ -43,16 +43,23 @@ namespace PocketWorld
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
             playerDbConn.UpgradeIncomeLevel();
-            UpdateScreen();
+            UpdateLabels();
         }
 
-        private void UpdateScreen()
+        private void UpdateLabels()
         {
             if (playerDbConn.isPlayerLoaded() == false) return;
             lblOutputCoin.Text = playerDbConn.GetPlayer().Coin.ToString();
             lblOutputIncome.Text = playerDbConn.GetPlayer().IncomeLevel.ToString();
             lblOutputNextIncomeCost.Text = playerDbConn.GetCurPlayerIncomeUpgradeCost().ToString();
             lblOutputNextIncomeValue.Text = (playerDbConn.GetPlayer().IncomeLevel + 1).ToString();
+        }
+
+        private void UpdateScreen()
+        {
+            if (playerDbConn.isPlayerLoaded() == false) return;
+
+            UpdateLabels();
 
             pocketmonPanel.Controls.Clear();
             libraryPanel.Controls.Clear();
@@ -92,7 +99,7 @@ namespace PocketWorld
             if (e.Button == MouseButtons.Left)
             {
                 playerDbConn.GetPlayer().IncreaseCoin();
-                UpdateScreen();
+                UpdateLabels();
             }
         }
 
@@ -102,6 +109,11 @@ namespace PocketWorld
             {
                 playerDbConn = myLoginFrm.DbConnector;
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UpdateScreen();
         }
     }
 }

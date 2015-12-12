@@ -455,6 +455,7 @@ namespace PocketWorld
             {
                 MessageBox.Show("구입 실패...");
             }
+
         }
 
         public void onPocketmonLoadClick(object sender, System.EventArgs e)

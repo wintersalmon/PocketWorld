@@ -47,6 +47,7 @@
             this.ChoiceMachinePage = new System.Windows.Forms.TabPage();
             this.libraryPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.mainTabPanel.SuspendLayout();
             this.PocketmonListPage.SuspendLayout();
@@ -57,7 +58,7 @@
             // btnUpgrade
             // 
             this.btnUpgrade.AutoSize = true;
-            this.btnUpgrade.Location = new System.Drawing.Point(638, 10);
+            this.btnUpgrade.Location = new System.Drawing.Point(597, 10);
             this.btnUpgrade.Name = "btnUpgrade";
             this.btnUpgrade.Size = new System.Drawing.Size(75, 46);
             this.btnUpgrade.TabIndex = 2;
@@ -147,6 +148,7 @@
             // 
             // menuPanel
             // 
+            this.menuPanel.Controls.Add(this.btnRefresh);
             this.menuPanel.Controls.Add(this.btnLogout);
             this.menuPanel.Controls.Add(this.btnIncreaseCoin);
             this.menuPanel.Controls.Add(this.btnUpgrade);
@@ -246,13 +248,23 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(760, 10);
+            this.btnLogout.Location = new System.Drawing.Point(675, 10);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(79, 46);
             this.btnLogout.TabIndex = 16;
             this.btnLogout.Text = "사용자 변경";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(760, 10);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(71, 46);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "새로고침";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // PocketWorld
             // 
@@ -295,6 +307,7 @@
         private System.Windows.Forms.TabPage ChoiceMachinePage;
         private System.Windows.Forms.FlowLayoutPanel libraryPanel;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 
