@@ -14,14 +14,14 @@ namespace PocketWorld
         private int chanceRare;
         private int startCost;
         private double costIncMultiplier;
-        private int[] normalMonIdArray;
-        private int[] rareMonIdArray;
+        private List<int> normalMonIdArray;
+        private List<int> rareMonIdArray;
         private Random randUnit;
 
-        ChoiceMachine()
+        public ChoiceMachine()
         {
-            normalMonIdArray = null;
-            rareMonIdArray = null;
+            NormalMonIdArray = new List<int>();
+            RareMonIdArray = new List<int>();
             randUnit = new Random();
         }
 
@@ -30,15 +30,15 @@ namespace PocketWorld
             int selectedMonId = -1;
 
  
-            if (normalMonIdArray != null && randUnit.Next(0, ChanceRare) > 0)
+            if (NormalMonIdArray != null && randUnit.Next(0, ChanceRare) > 0)
             {
-                int index = randUnit.Next(0, normalMonIdArray.Length);
-                selectedMonId = normalMonIdArray[index];
+                int index = randUnit.Next(0, NormalMonIdArray.Count);
+                selectedMonId = NormalMonIdArray[index];
             }
-            else if(rareMonIdArray != null)
+            else if(RareMonIdArray != null)
             {
-                int index = randUnit.Next(0, rareMonIdArray.Length);
-                selectedMonId = rareMonIdArray[index];
+                int index = randUnit.Next(0, RareMonIdArray.Count);
+                selectedMonId = RareMonIdArray[index];
             }
 
             return selectedMonId;
@@ -135,7 +135,7 @@ namespace PocketWorld
             }
         }
 
-        public int[] NormalMonIdArray
+        public List<int> NormalMonIdArray
         {
             get
             {
@@ -148,7 +148,7 @@ namespace PocketWorld
             }
         }
 
-        public int[] RareMonIdArray
+        public List<int> RareMonIdArray
         {
             get
             {
@@ -160,6 +160,5 @@ namespace PocketWorld
                 rareMonIdArray = value;
             }
         }
-        
     }
 }

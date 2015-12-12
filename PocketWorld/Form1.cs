@@ -57,8 +57,19 @@ namespace PocketWorld
         {
             PlayerDBConnectManager db = new PlayerDBConnectManager();
 
-            if (db.initConnectionWithPlayer("salmonjoon@gmail.com", "1234") == true)
+            if (db.initConnectionWithPlayer("salmonjoon", "1234") == true)
+            {
                 MessageBox.Show(db.GetPlayer().Id + "," + db.GetPlayer().Pw + "," + db.GetPlayer().Coin + "," + db.GetPlayer().IncomeLevel);
+
+                String idListStr = "";
+                foreach (ChoiceMachine machine in db.GetChoiceMachineList()) {
+                    foreach (int id in machine.NormalMonIdArray)
+                    {
+                        idListStr += id + ", ";
+                    }
+                    MessageBox.Show(idListStr);
+                }
+            }
         }
 
         private void btnIncCoin_Click(object sender, EventArgs e)

@@ -11,16 +11,17 @@ namespace PocketWorld
     class PlayerDBConnectManager
     {
         private Player itsPlayer;
-
         private List<Pocketmon> itsPlayerPocketmonList;
-
         private List<ChoiceMachine> itsChoiceMachineList;
+        private bool bIsPlayerLoaded;
+
 
         public PlayerDBConnectManager()
         {
-            itsPlayer = null;
-            itsPlayerPocketmonList = null;
-            itsChoiceMachineList = null;
+            itsPlayer = new Player();
+            itsPlayerPocketmonList = new List<Pocketmon>();
+            itsChoiceMachineList = new List<ChoiceMachine>();
+            bIsPlayerLoaded = false;
         }
 
         /* DB Connect, Load, Select, Save 를 위해 필요한 메서드들 */
@@ -59,14 +60,13 @@ namespace PocketWorld
                     {
                         if (reader.Read())
                         {
-                            itsPlayer = new Player();
-
                             itsPlayer.Id = (string)reader["player_id"];
                             itsPlayer.Pw = (string)reader["player_pw"];
                             itsPlayer.Coin = (int)reader["possess_coin"];
                             itsPlayer.IncomeLevel = (int)reader["income_level"];
-                            bSucces = true;
+                            bIsPlayerLoaded = true;
                         }
+                        bSucces = true;
                     }
                 }
             }
@@ -161,14 +161,118 @@ namespace PocketWorld
 
         private bool LoadPlayerPocketmonList(String player_id)
         {
-            return true;
+            String sql = "select * from Pocketmon, mon where player_id=@player_id;";
+            bool bSucces = false;
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+                        comm.Prepare();
+                        comm.Parameters.AddWithValue("@player_id", player_id);
+
+                        using (MySqlDataReader reader = comm.ExecuteReader())
+                        {
+                            itsPlayerPocketmonList.Clear();
+                            while (reader.Read())
+                            {
+                                Pocketmon pocketmon = new Pocketmon();
+                                pocketmon.PocketmonId       = (int)reader["pocketmon_id"];
+                                pocketmon.MonId             = (int)reader["mon_id"];
+                                pocketmon.PocketmonStatus   = (int)reader["pocketmon_status"];
+                                pocketmon.Rank              = (int)reader["rank"];
+                                pocketmon.GainCoin          = (int)reader["gain_coin"];
+                                pocketmon.PlayerId          = (String)reader["player_id"];
+                                pocketmon.MonName           = (String)reader["mon_name"];
+                                pocketmon.MonExplanation    = (String)reader["mon_explanation"];
+                                pocketmon.GainCoinExplanation   = (String)reader["gain_coin_explanation"];
+
+                                itsPlayerPocketmonList.Add(pocketmon);
+                            }
+                            bSucces = true;
+                        }
+                    }
+                }
+            }
+            return bSucces;
         }
 
         private bool LoadChoiceMachineList()
         {
-            return true;
+            String sql = "select * from choice_machine;";
+
+            bool bSucces = false;
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+                        using (MySqlDataReader reader = comm.ExecuteReader())
+                        {
+                            itsChoiceMachineList.Clear();
+                            while (reader.Read())
+                            {
+
+                                ChoiceMachine machine = new ChoiceMachine();
+                                machine.MachineId   = (int)reader["machine_id"];
+                                machine.RankNormal  = (int)reader["rank_normal"];
+                                machine.RankRare    = (int)reader["rank_rare"];
+                                machine.ChanceRare  = (int)reader["chance_rare"];
+                                machine.StartCost   = (int)reader["start_cost"];
+                                machine.CostIncMultiplier   = (double)reader["cost_inc_multiplier"];
+
+                                LoadPocketmonIdListWithRankToIdList(machine.NormalMonIdArray, machine.RankNormal);
+                                LoadPocketmonIdListWithRankToIdList(machine.RareMonIdArray, machine.RankRare);
+                                itsChoiceMachineList.Add(machine);
+                            }
+                            bSucces = true;
+                        }
+                    }
+                }
+
+            }
+
+            return bSucces;
         }
 
+        private void LoadPocketmonIdListWithRankToIdList(List<int> idList, int rank)
+        {
+            String sql = "select mon_id from mon where rank=@rank;";
+
+            if (isPlayerLoaded())
+            {
+                using (MySqlConnection conn = ConnectToDB())
+                {
+                    conn.Open();
+                    using (MySqlCommand comm = new MySqlCommand(sql, conn))
+                    {
+
+                        comm.Prepare();
+                        comm.Parameters.AddWithValue("@rank", rank);
+
+                        using (MySqlDataReader reader = comm.ExecuteReader())
+                        {
+
+                            idList.Clear();
+                            while (reader.Read())
+                            {
+                                int monId = (int)reader["mon_id"];
+                                idList.Add(monId);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
 
 
 
@@ -199,7 +303,7 @@ namespace PocketWorld
         /* 접속 정보를 시스템이 사용하기 위해 만든 getter checker 들 */
         public bool isPlayerLoaded()
         {
-            return (itsPlayer != null) ? true : false;
+            return bIsPlayerLoaded;
         }
 
         public Player GetPlayer() {
