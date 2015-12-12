@@ -48,19 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChoiceMachineForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChoiceMachineForm.Designer.cs">
-      <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ChoiceMachineViewBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ChoiceMachineViewBox.Designer.cs">
       <DependentUpon>ChoiceMachineViewBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="CoinIncomeManager.cs" />
     <Compile Include="ChoiceMachine.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,9 +85,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChoiceMachineForm.resx">
-      <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChoiceMachineViewBox.resx">
       <DependentUpon>ChoiceMachineViewBox.cs</DependentUpon>
     </EmbeddedResource>
