@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PocketWorld
 {
-    public class ChoiceMachine
+    public class ChoiceMachine : ChoiceMachineViewBox
     {
         private int machineId;
         private int rankNormal;
         private int rankRare;
         private int chanceRare;
         private int startCost;
-        private double costIncMultiplier;
+        private int costIncMultiplier;
         private List<int> normalMonIdArray;
         private List<int> rareMonIdArray;
         private Random randUnit;
@@ -24,6 +25,16 @@ namespace PocketWorld
             RareMonIdArray = new List<int>();
             randUnit = new Random();
         }
+
+        public void ReLoadContents()
+        {
+            this.lblMachineId.Text = machineId.ToString();
+            this.lblChoiceCost.Text = startCost.ToString();
+            this.lblNormalRank.Text = rankNormal.ToString();
+            this.lblRareRank.Text = rankRare.ToString();
+
+            this.mainPictureBox.Image = (Image)Properties.Resources.ResourceManager.GetObject(GetImageURLStr());
+        }          public string GetImageURLStr()         {             return "choiceMachine" + this.machineId;         }
 
         public int SpinForRandomMonId()
         {
@@ -45,16 +56,11 @@ namespace PocketWorld
         }
         public int CalculateSpinCost(int monCnt)
         {
-            double cost = startCost;
-            for (int i = 0; i < monCnt; i++)
-            {
-                cost *= costIncMultiplier;
-            }
+            int price = -1;
 
-            int resultCost = (int) cost;
+            price = StartCost + (monCnt * CostIncMultiplier);
 
-
-            return resultCost;
+            return price;
         }
 
         public int MachineId
@@ -122,7 +128,7 @@ namespace PocketWorld
             }
         }
 
-        public double CostIncMultiplier
+        public int CostIncMultiplier
         {
             get
             {

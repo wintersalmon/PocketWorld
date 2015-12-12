@@ -7,6 +7,11 @@
         private int coin;
         private int incomeLevel;
 
+        public void IncreaseCoin()
+        {
+            IncreaseCoin(incomeLevel);
+        }
+
         public void IncreaseCoin(int _inc_coin)
         {
             this.coin += _inc_coin;

@@ -13,41 +13,18 @@ namespace PocketWorld
 {
     public partial class PocketWorld : Form
     {
-        private Player itsPlayer;
-        private CoinIncomeManager itsCoinManager;
-        private List<ChoiceMachine> itsChoiceMachineList;
+        private PlayerDBConnectManager playerDbConn;
+        private LoginForm myLoginFrm;
 
-        private ChoiceMachineForm choiceMachineFrm;
-
-        private Mob myTestMob;
         public PocketWorld()
         {
             InitializeComponent();
-            itsPlayer = null;
-           
-            itsChoiceMachineList = new List<ChoiceMachine>();
 
-            for (int i=0, cost = 100; i<6; i++, cost *= cost)
+            myLoginFrm = new LoginForm();
+
+            if( myLoginFrm.ShowDialog(this) == DialogResult.Yes)
             {
-                //itsChoiceMachineList.Add(new ChoiceMachine(i + 1, cost, 5, 30));
-            }
-            
-            itsCoinManager = new CoinIncomeManager(itsPlayer);
-
-            choiceMachineFrm = new ChoiceMachineForm(6);
-            choiceMachineFrm.ItsPlayer = itsPlayer;
-
-            for(int i=0; i< itsChoiceMachineList.Count; i++)
-            {
-                choiceMachineFrm.SetChoiceMachine(i, itsChoiceMachineList[i]);
-            }
-
-            for (int mIdx = 0; mIdx < itsChoiceMachineList.Count; mIdx++)
-            {
-                for (int count = 1 ; count < 10; count++)
-                {
-                    //itsChoiceMachineList[mIdx].AddMobId(count);
-                }
+                playerDbConn = myLoginFrm.DbConnector;
             }
 
             UpdateScreen();
@@ -55,81 +32,76 @@ namespace PocketWorld
 
         private void PocketWorld_Load(object sender, EventArgs e)
         {
-            PlayerDBConnectManager db = new PlayerDBConnectManager();
 
-            if (db.initConnectionWithPlayer("salmonjoon", "1234") == true)
-            {
-                MessageBox.Show(db.GetPlayer().Id + "," + db.GetPlayer().Pw + "," + db.GetPlayer().Coin + "," + db.GetPlayer().IncomeLevel);
-
-                String idListStr = "";
-                foreach (ChoiceMachine machine in db.GetChoiceMachineList()) {
-                    foreach (int id in machine.NormalMonIdArray)
-                    {
-                        idListStr += id + ", ";
-                    }
-                    MessageBox.Show(idListStr);
-                }
-            }
         }
 
         private void btnIncCoin_Click(object sender, EventArgs e)
         {
-            itsCoinManager.GainIncome();
             UpdateScreen();
         }
 
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
-            //itsCoinManager.UpgradeIncome(itsPlayer.Income * 2);
+            playerDbConn.UpgradeIncomeLevel();
             UpdateScreen();
         }
 
         private void UpdateScreen()
         {
-            /*
-            lblOutputCoin.Text = itsPlayer.Coin.ToString();
-            lblOutputIncome.Text = itsPlayer.Income.ToString();
-            lblOutputNextIncomeCost.Text = itsCoinManager.getNextUpgradeCost().ToString();
-            lblOutputNextIncomeValue.Text = itsCoinManager.getNextUpgradeIncome().ToString();
+            if (playerDbConn.isPlayerLoaded() == false) return;
+            lblOutputCoin.Text = playerDbConn.GetPlayer().Coin.ToString();
+            lblOutputIncome.Text = playerDbConn.GetPlayer().IncomeLevel.ToString();
+            lblOutputNextIncomeCost.Text = playerDbConn.GetCurPlayerIncomeUpgradeCost().ToString();
+            lblOutputNextIncomeValue.Text = (playerDbConn.GetPlayer().IncomeLevel + 1).ToString();
 
-
-            String strUserMobId = "";
-            List<int> mobIdList = itsPlayer.getMobIdList();
-            
-            if (mobIdList == null) return;
-
-            for (int i = 0; i < mobIdList.Count; i++)
+            pocketmonPanel.Controls.Clear();
+            libraryPanel.Controls.Clear();
+            foreach (Pocketmon pocketmon in playerDbConn.GetPocketmonList())
             {
-                strUserMobId += mobIdList[i].ToString() + ", ";
+                pocketmon.ReLoadContents();
+                if(pocketmon.PocketmonStatus == 0)
+                {
+                    libraryPanel.Controls.Add(pocketmon);
+                }
+                else
+                {
+                    pocketmonPanel.Controls.Add(pocketmon);
+                }
             }
-            lblOutputUserMobIdLIst.Text = strUserMobId;
-            */
-        }
 
-        private void mainPanel_Paint(object sender, PaintEventArgs e)
-        {
-            lblIncomeResult.Text = "";
-            myTestMob = new Mob(1, "my", 0, 0, 0, "Hello");
-
-            mainPanel.Controls.Add(myTestMob);
-        }
-
-        private void mainPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            Point pos = e.Location;
-            pos.X += 10;
-            pos.Y -= 10;
-            lblIncomeResult.Location = pos;
-
-            lblIncomeResult.Text = "+" + itsCoinManager.getCurIncome().ToString();
-
-            itsCoinManager.GainIncome();
-            UpdateScreen();
+            choiceMachinePanel.Controls.Clear();
+            foreach (ChoiceMachine machine in playerDbConn.GetChoiceMachineList())
+            {
+                machine.ReLoadContents();
+                choiceMachinePanel.Controls.Add(machine);
+            }
         }
 
         private void btnDrawMob_Click(object sender, EventArgs e)
         {
-            choiceMachineFrm.ShowDialog(this);
+            //choiceMachineFrm.ShowDialog(this);
+        }
+
+        private void PocketWorld_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            playerDbConn.SavePlayer();
+        }
+
+        private void btnIncreaseCoin_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                playerDbConn.GetPlayer().IncreaseCoin();
+                UpdateScreen();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (myLoginFrm.ShowDialog(this) == DialogResult.Yes)
+            {
+                playerDbConn = myLoginFrm.DbConnector;
+            }
         }
     }
 }

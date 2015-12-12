@@ -54,27 +54,61 @@
     <Compile Include="ChoiceMachineForm.Designer.cs">
       <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoiceMachineViewBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChoiceMachineViewBox.Designer.cs">
+      <DependentUpon>ChoiceMachineViewBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoinIncomeManager.cs" />
-    <Compile Include="ChoiceMachine.cs" />
+    <Compile Include="ChoiceMachine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mob.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="player.cs" />
     <Compile Include="PlayerDBConnectManager.cs" />
-    <Compile Include="Pocketmon.cs" />
+    <Compile Include="Pocketmon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PocketmonViewBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PocketmonViewBox.Designer.cs">
+      <DependentUpon>PocketmonViewBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChoiceMachineForm.resx">
       <DependentUpon>ChoiceMachineForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChoiceMachineViewBox.resx">
+      <DependentUpon>ChoiceMachineViewBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pocketmon.resx">
+      <DependentUpon>Pocketmon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PocketmonViewBox.resx">
+      <DependentUpon>PocketmonViewBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,9 +134,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\mycat.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +141,53 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\_error.gif" />
+    <None Include="Resources\rare6.png" />
+    <None Include="Resources\rare5.png" />
+    <None Include="Resources\rare4.png" />
+    <None Include="Resources\rare3.png" />
+    <None Include="Resources\rare2.png" />
+    <None Include="Resources\rare1.png" />
+    <None Include="Resources\rare0.png" />
+    <None Include="Resources\choiceMachine6.gif" />
+    <None Include="Resources\choiceMachine5.gif" />
+    <None Include="Resources\choiceMachine4.gif" />
+    <None Include="Resources\choiceMachine3.gif" />
+    <None Include="Resources\choiceMachine2.gif" />
+    <None Include="Resources\choiceMachine1.gif" />
+    <None Include="Resources\lib250.png" />
+    <None Include="Resources\lib94.png" />
+    <None Include="Resources\lib1.png" />
+    <None Include="Resources\lib10.png" />
+    <None Include="Resources\lib12.png" />
+    <None Include="Resources\lib13.png" />
+    <None Include="Resources\lib129.png" />
+    <None Include="Resources\lib130.png" />
+    <None Include="Resources\lib143.png" />
+    <None Include="Resources\lib144.png" />
+    <None Include="Resources\lib145.png" />
+    <None Include="Resources\lib146.png" />
+    <None Include="Resources\lib148.png" />
+    <None Include="Resources\lib149.png" />
+    <None Include="Resources\lib150.png" />
+    <None Include="Resources\lib16.png" />
+    <None Include="Resources\lib2.png" />
+    <None Include="Resources\lib19.png" />
+    <None Include="Resources\lib151.png" />
+    <None Include="Resources\lib25.png" />
+    <None Include="Resources\lib249.png" />
+    <None Include="Resources\lib3.png" />
+    <None Include="Resources\lib4.png" />
+    <None Include="Resources\lib26.png" />
+    <None Include="Resources\lib43.png" />
+    <None Include="Resources\lib44.png" />
+    <None Include="Resources\lib5.png" />
+    <None Include="Resources\lib6.png" />
+    <None Include="Resources\lib45.png" />
+    <None Include="Resources\lib7.png" />
+    <None Include="Resources\lib8.png" />
+    <None Include="Resources\lib9.png" />
+    <None Include="Resources\lib65.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

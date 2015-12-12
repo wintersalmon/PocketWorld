@@ -28,56 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDrawMob = new System.Windows.Forms.Button();
             this.btnUpgrade = new System.Windows.Forms.Button();
-            this.btnOpenLibary = new System.Windows.Forms.Button();
             this.lblCoin = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
             this.lblOutputCoin = new System.Windows.Forms.Label();
             this.lblOutputIncome = new System.Windows.Forms.Label();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.lblOutputUserMobIdLIst = new System.Windows.Forms.Label();
-            this.lblIncomeResult = new System.Windows.Forms.Label();
             this.lblNextIncomeCost = new System.Windows.Forms.Label();
             this.lblNextIncomeValue = new System.Windows.Forms.Label();
             this.lblOutputNextIncomeCost = new System.Windows.Forms.Label();
             this.lblOutputNextIncomeValue = new System.Windows.Forms.Label();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.mainPanel.SuspendLayout();
+            this.btnIncreaseCoin = new System.Windows.Forms.Button();
+            this.choiceMachinePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.pocketmonPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.mainTabPanel = new System.Windows.Forms.TabControl();
+            this.PocketmonListPage = new System.Windows.Forms.TabPage();
+            this.libraryPage = new System.Windows.Forms.TabPage();
+            this.ChoiceMachinePage = new System.Windows.Forms.TabPage();
+            this.libraryPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
+            this.mainTabPanel.SuspendLayout();
+            this.PocketmonListPage.SuspendLayout();
+            this.libraryPage.SuspendLayout();
+            this.ChoiceMachinePage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnDrawMob
-            // 
-            this.btnDrawMob.AutoSize = true;
-            this.btnDrawMob.Location = new System.Drawing.Point(673, 10);
-            this.btnDrawMob.Name = "btnDrawMob";
-            this.btnDrawMob.Size = new System.Drawing.Size(79, 46);
-            this.btnDrawMob.TabIndex = 1;
-            this.btnDrawMob.Text = "포캣몬 뽑기";
-            this.btnDrawMob.UseVisualStyleBackColor = true;
-            this.btnDrawMob.Click += new System.EventHandler(this.btnDrawMob_Click);
             // 
             // btnUpgrade
             // 
             this.btnUpgrade.AutoSize = true;
-            this.btnUpgrade.Location = new System.Drawing.Point(511, 10);
+            this.btnUpgrade.Location = new System.Drawing.Point(638, 10);
             this.btnUpgrade.Name = "btnUpgrade";
             this.btnUpgrade.Size = new System.Drawing.Size(75, 46);
             this.btnUpgrade.TabIndex = 2;
             this.btnUpgrade.Text = "업그레이드";
             this.btnUpgrade.UseVisualStyleBackColor = true;
             this.btnUpgrade.Click += new System.EventHandler(this.btnUpgrade_Click);
-            // 
-            // btnOpenLibary
-            // 
-            this.btnOpenLibary.AutoSize = true;
-            this.btnOpenLibary.Location = new System.Drawing.Point(592, 10);
-            this.btnOpenLibary.Name = "btnOpenLibary";
-            this.btnOpenLibary.Size = new System.Drawing.Size(75, 46);
-            this.btnOpenLibary.TabIndex = 3;
-            this.btnOpenLibary.Text = "도감열기";
-            this.btnOpenLibary.UseVisualStyleBackColor = true;
             // 
             // lblCoin
             // 
@@ -103,7 +89,7 @@
             // 
             this.lblOutputCoin.AutoSize = true;
             this.lblOutputCoin.Font = new System.Drawing.Font("굴림", 14F);
-            this.lblOutputCoin.Location = new System.Drawing.Point(69, 34);
+            this.lblOutputCoin.Location = new System.Drawing.Point(3, 34);
             this.lblOutputCoin.Name = "lblOutputCoin";
             this.lblOutputCoin.Size = new System.Drawing.Size(19, 19);
             this.lblOutputCoin.TabIndex = 7;
@@ -113,41 +99,11 @@
             // 
             this.lblOutputIncome.AutoSize = true;
             this.lblOutputIncome.Font = new System.Drawing.Font("굴림", 14F);
-            this.lblOutputIncome.Location = new System.Drawing.Point(160, 34);
+            this.lblOutputIncome.Location = new System.Drawing.Point(94, 34);
             this.lblOutputIncome.Name = "lblOutputIncome";
             this.lblOutputIncome.Size = new System.Drawing.Size(19, 19);
             this.lblOutputIncome.TabIndex = 8;
             this.lblOutputIncome.Text = "0";
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.lblOutputUserMobIdLIst);
-            this.mainPanel.Controls.Add(this.lblIncomeResult);
-            this.mainPanel.Location = new System.Drawing.Point(12, 143);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(760, 400);
-            this.mainPanel.TabIndex = 11;
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
-            this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
-            // 
-            // lblOutputUserMobIdLIst
-            // 
-            this.lblOutputUserMobIdLIst.AutoSize = true;
-            this.lblOutputUserMobIdLIst.Location = new System.Drawing.Point(5, 18);
-            this.lblOutputUserMobIdLIst.Name = "lblOutputUserMobIdLIst";
-            this.lblOutputUserMobIdLIst.Size = new System.Drawing.Size(40, 12);
-            this.lblOutputUserMobIdLIst.TabIndex = 1;
-            this.lblOutputUserMobIdLIst.Text = "MobId";
-            // 
-            // lblIncomeResult
-            // 
-            this.lblIncomeResult.AutoSize = true;
-            this.lblIncomeResult.Font = new System.Drawing.Font("굴림", 15F);
-            this.lblIncomeResult.Location = new System.Drawing.Point(94, 80);
-            this.lblIncomeResult.Name = "lblIncomeResult";
-            this.lblIncomeResult.Size = new System.Drawing.Size(30, 20);
-            this.lblIncomeResult.TabIndex = 0;
-            this.lblIncomeResult.Text = "...";
             // 
             // lblNextIncomeCost
             // 
@@ -173,7 +129,7 @@
             // 
             this.lblOutputNextIncomeCost.AutoSize = true;
             this.lblOutputNextIncomeCost.Font = new System.Drawing.Font("굴림", 14F);
-            this.lblOutputNextIncomeCost.Location = new System.Drawing.Point(278, 34);
+            this.lblOutputNextIncomeCost.Location = new System.Drawing.Point(185, 34);
             this.lblOutputNextIncomeCost.Name = "lblOutputNextIncomeCost";
             this.lblOutputNextIncomeCost.Size = new System.Drawing.Size(19, 19);
             this.lblOutputNextIncomeCost.TabIndex = 11;
@@ -183,7 +139,7 @@
             // 
             this.lblOutputNextIncomeValue.AutoSize = true;
             this.lblOutputNextIncomeValue.Font = new System.Drawing.Font("굴림", 14F);
-            this.lblOutputNextIncomeValue.Location = new System.Drawing.Point(451, 34);
+            this.lblOutputNextIncomeValue.Location = new System.Drawing.Point(339, 34);
             this.lblOutputNextIncomeValue.Name = "lblOutputNextIncomeValue";
             this.lblOutputNextIncomeValue.Size = new System.Drawing.Size(19, 19);
             this.lblOutputNextIncomeValue.TabIndex = 12;
@@ -191,9 +147,9 @@
             // 
             // menuPanel
             // 
-            this.menuPanel.Controls.Add(this.btnOpenLibary);
+            this.menuPanel.Controls.Add(this.btnLogout);
+            this.menuPanel.Controls.Add(this.btnIncreaseCoin);
             this.menuPanel.Controls.Add(this.btnUpgrade);
-            this.menuPanel.Controls.Add(this.btnDrawMob);
             this.menuPanel.Controls.Add(this.lblNextIncomeValue);
             this.menuPanel.Controls.Add(this.lblNextIncomeCost);
             this.menuPanel.Controls.Add(this.lblOutputIncome);
@@ -202,46 +158,143 @@
             this.menuPanel.Controls.Add(this.lblIncome);
             this.menuPanel.Controls.Add(this.lblOutputNextIncomeCost);
             this.menuPanel.Controls.Add(this.lblOutputCoin);
-            this.menuPanel.Location = new System.Drawing.Point(12, 67);
+            this.menuPanel.Location = new System.Drawing.Point(12, 12);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(760, 70);
+            this.menuPanel.Size = new System.Drawing.Size(843, 70);
             this.menuPanel.TabIndex = 12;
+            // 
+            // btnIncreaseCoin
+            // 
+            this.btnIncreaseCoin.Location = new System.Drawing.Point(512, 10);
+            this.btnIncreaseCoin.Name = "btnIncreaseCoin";
+            this.btnIncreaseCoin.Size = new System.Drawing.Size(79, 46);
+            this.btnIncreaseCoin.TabIndex = 15;
+            this.btnIncreaseCoin.Text = "돈벌기";
+            this.btnIncreaseCoin.UseVisualStyleBackColor = true;
+            this.btnIncreaseCoin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnIncreaseCoin_MouseClick);
+            // 
+            // choiceMachinePanel
+            // 
+            this.choiceMachinePanel.AutoScroll = true;
+            this.choiceMachinePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.choiceMachinePanel.Location = new System.Drawing.Point(3, 3);
+            this.choiceMachinePanel.Name = "choiceMachinePanel";
+            this.choiceMachinePanel.Size = new System.Drawing.Size(836, 418);
+            this.choiceMachinePanel.TabIndex = 13;
+            // 
+            // pocketmonPanel
+            // 
+            this.pocketmonPanel.AutoScroll = true;
+            this.pocketmonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pocketmonPanel.Location = new System.Drawing.Point(3, 3);
+            this.pocketmonPanel.Name = "pocketmonPanel";
+            this.pocketmonPanel.Size = new System.Drawing.Size(836, 418);
+            this.pocketmonPanel.TabIndex = 14;
+            // 
+            // mainTabPanel
+            // 
+            this.mainTabPanel.Controls.Add(this.PocketmonListPage);
+            this.mainTabPanel.Controls.Add(this.libraryPage);
+            this.mainTabPanel.Controls.Add(this.ChoiceMachinePage);
+            this.mainTabPanel.Location = new System.Drawing.Point(12, 88);
+            this.mainTabPanel.Name = "mainTabPanel";
+            this.mainTabPanel.SelectedIndex = 0;
+            this.mainTabPanel.Size = new System.Drawing.Size(850, 450);
+            this.mainTabPanel.TabIndex = 15;
+            // 
+            // PocketmonListPage
+            // 
+            this.PocketmonListPage.Controls.Add(this.pocketmonPanel);
+            this.PocketmonListPage.Location = new System.Drawing.Point(4, 22);
+            this.PocketmonListPage.Name = "PocketmonListPage";
+            this.PocketmonListPage.Padding = new System.Windows.Forms.Padding(3);
+            this.PocketmonListPage.Size = new System.Drawing.Size(842, 424);
+            this.PocketmonListPage.TabIndex = 0;
+            this.PocketmonListPage.Text = "포켓몬";
+            this.PocketmonListPage.UseVisualStyleBackColor = true;
+            // 
+            // libraryPage
+            // 
+            this.libraryPage.Controls.Add(this.libraryPanel);
+            this.libraryPage.Location = new System.Drawing.Point(4, 22);
+            this.libraryPage.Name = "libraryPage";
+            this.libraryPage.Padding = new System.Windows.Forms.Padding(3);
+            this.libraryPage.Size = new System.Drawing.Size(842, 424);
+            this.libraryPage.TabIndex = 1;
+            this.libraryPage.Text = "도감";
+            this.libraryPage.UseVisualStyleBackColor = true;
+            // 
+            // ChoiceMachinePage
+            // 
+            this.ChoiceMachinePage.Controls.Add(this.choiceMachinePanel);
+            this.ChoiceMachinePage.Location = new System.Drawing.Point(4, 22);
+            this.ChoiceMachinePage.Name = "ChoiceMachinePage";
+            this.ChoiceMachinePage.Padding = new System.Windows.Forms.Padding(3);
+            this.ChoiceMachinePage.Size = new System.Drawing.Size(842, 424);
+            this.ChoiceMachinePage.TabIndex = 2;
+            this.ChoiceMachinePage.Text = "뽑기 머신";
+            this.ChoiceMachinePage.UseVisualStyleBackColor = true;
+            // 
+            // libraryPanel
+            // 
+            this.libraryPanel.AutoScroll = true;
+            this.libraryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.libraryPanel.Location = new System.Drawing.Point(3, 3);
+            this.libraryPanel.Name = "libraryPanel";
+            this.libraryPanel.Size = new System.Drawing.Size(836, 418);
+            this.libraryPanel.TabIndex = 0;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(760, 10);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(79, 46);
+            this.btnLogout.TabIndex = 16;
+            this.btnLogout.Text = "사용자 변경";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // PocketWorld
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(863, 549);
+            this.Controls.Add(this.mainTabPanel);
             this.Controls.Add(this.menuPanel);
-            this.Controls.Add(this.mainPanel);
             this.Name = "PocketWorld";
             this.Text = "PocketWorld";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PocketWorld_FormClosing);
             this.Load += new System.EventHandler(this.PocketWorld_Load);
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
+            this.mainTabPanel.ResumeLayout(false);
+            this.PocketmonListPage.ResumeLayout(false);
+            this.libraryPage.ResumeLayout(false);
+            this.ChoiceMachinePage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnDrawMob;
         private System.Windows.Forms.Button btnUpgrade;
-        private System.Windows.Forms.Button btnOpenLibary;
         private System.Windows.Forms.Label lblCoin;
         private System.Windows.Forms.Label lblIncome;
         private System.Windows.Forms.Label lblOutputCoin;
         private System.Windows.Forms.Label lblOutputIncome;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Label lblIncomeResult;
         private System.Windows.Forms.Label lblNextIncomeCost;
         private System.Windows.Forms.Label lblNextIncomeValue;
         private System.Windows.Forms.Label lblOutputNextIncomeCost;
         private System.Windows.Forms.Label lblOutputNextIncomeValue;
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Label lblOutputUserMobIdLIst;
+        private System.Windows.Forms.FlowLayoutPanel choiceMachinePanel;
+        private System.Windows.Forms.FlowLayoutPanel pocketmonPanel;
+        private System.Windows.Forms.Button btnIncreaseCoin;
+        private System.Windows.Forms.TabControl mainTabPanel;
+        private System.Windows.Forms.TabPage PocketmonListPage;
+        private System.Windows.Forms.TabPage libraryPage;
+        private System.Windows.Forms.TabPage ChoiceMachinePage;
+        private System.Windows.Forms.FlowLayoutPanel libraryPanel;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 
