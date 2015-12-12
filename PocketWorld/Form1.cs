@@ -23,23 +23,13 @@ namespace PocketWorld
         public PocketWorld()
         {
             InitializeComponent();
-            itsPlayer = new Player();
-
-            itsPlayer.ItsId = "Salmonjoon"; 
-            itsPlayer.ItsPw = "1234";
-            itsPlayer.Coin = 100;
-            itsPlayer.Income = 1;
-            itsPlayer.IncomeLevel = 1;
-
-            itsPlayer.getMobIdList().Add(10);
-            itsPlayer.getMobIdList().Add(11);
-            itsPlayer.getMobIdList().Add(12);
-
+            itsPlayer = null;
+           
             itsChoiceMachineList = new List<ChoiceMachine>();
 
             for (int i=0, cost = 100; i<6; i++, cost *= cost)
             {
-                itsChoiceMachineList.Add(new ChoiceMachine(i + 1, cost, 5, 30));
+                //itsChoiceMachineList.Add(new ChoiceMachine(i + 1, cost, 5, 30));
             }
             
             itsCoinManager = new CoinIncomeManager(itsPlayer);
@@ -56,17 +46,19 @@ namespace PocketWorld
             {
                 for (int count = 1 ; count < 10; count++)
                 {
-                    itsChoiceMachineList[mIdx].AddMobId(count);
+                    //itsChoiceMachineList[mIdx].AddMobId(count);
                 }
             }
 
             UpdateScreen();
-
-
         }
 
         private void PocketWorld_Load(object sender, EventArgs e)
         {
+            PlayerDBConnectManager db = new PlayerDBConnectManager();
+
+            if (db.initConnectionWithPlayer("salmonjoon@gmail.com", "1234") == true)
+                MessageBox.Show(db.GetPlayer().Id + "," + db.GetPlayer().Pw + "," + db.GetPlayer().Coin + "," + db.GetPlayer().IncomeLevel);
 
         }
 
@@ -78,12 +70,13 @@ namespace PocketWorld
 
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
-            itsCoinManager.UpgradeIncome(itsPlayer.Income * 2);
+            //itsCoinManager.UpgradeIncome(itsPlayer.Income * 2);
             UpdateScreen();
         }
 
         private void UpdateScreen()
         {
+            /*
             lblOutputCoin.Text = itsPlayer.Coin.ToString();
             lblOutputIncome.Text = itsPlayer.Income.ToString();
             lblOutputNextIncomeCost.Text = itsCoinManager.getNextUpgradeCost().ToString();
@@ -100,6 +93,7 @@ namespace PocketWorld
                 strUserMobId += mobIdList[i].ToString() + ", ";
             }
             lblOutputUserMobIdLIst.Text = strUserMobId;
+            */
         }
 
         private void mainPanel_Paint(object sender, PaintEventArgs e)

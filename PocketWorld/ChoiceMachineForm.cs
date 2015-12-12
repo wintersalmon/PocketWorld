@@ -48,32 +48,32 @@ namespace PocketWorld
 
         private void btnMachineLv01_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[0].getRandomMobId().ToString();
+            //lblOutResult.Text = itsMachineArr[0].getRandomMobId().ToString();
         }
 
         private void btnMachineLv02_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[1].getRandomMobId().ToString();
+          //  lblOutResult.Text = itsMachineArr[1].getRandomMobId().ToString();
         }
 
         private void btnMachineLv03_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[2].getRandomMobId().ToString();
+           // lblOutResult.Text = itsMachineArr[2].getRandomMobId().ToString();
         }
 
         private void btnMachineLv04_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[3].getRandomMobId().ToString();
+          //  lblOutResult.Text = itsMachineArr[3].getRandomMobId().ToString();
         }
 
         private void btnMachineLv05_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[4].getRandomMobId().ToString();
+         //   lblOutResult.Text = itsMachineArr[4].getRandomMobId().ToString();
         }
 
         private void btnMachineLv06_Click(object sender, EventArgs e)
         {
-            lblOutResult.Text = itsMachineArr[5].getRandomMobId().ToString();
+           // lblOutResult.Text = itsMachineArr[5].getRandomMobId().ToString();
         }
     }
 }

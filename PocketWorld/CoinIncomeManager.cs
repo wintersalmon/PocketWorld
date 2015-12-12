@@ -38,7 +38,7 @@ namespace PocketWorld
         {
             if (hasPlayer())
             {
-                itsPlayer.GainIncome();
+             //   itsPlayer.GainIncome();
             }
         }
 
@@ -52,7 +52,7 @@ namespace PocketWorld
                 {
                     itsPlayer.IncomeLevel += 1;
                     itsPlayer.Coin -= upgradeCost;
-                    itsPlayer.Income = upgradeIncome;
+               //     itsPlayer.Income = upgradeIncome;
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace PocketWorld
         {
             if (hasPlayer())
             {
-                return itsPlayer.Income;
+       //         return itsPlayer.Income;
             }
             return 0;
         }
