@@ -26,7 +26,7 @@ namespace PocketWorld
             randUnit = new Random();
         }
 
-        public void ReLoadContents()
+        public void initContent()
         {
             this.lblMachineId.Text = machineId.ToString();
             this.lblChoiceCost.Text = startCost.ToString();
@@ -34,7 +34,17 @@ namespace PocketWorld
             this.lblRareRank.Text = rankRare.ToString();
 
             this.mainPictureBox.Image = (Image)Properties.Resources.ResourceManager.GetObject(GetImageURLStr());
-        }          public string GetImageURLStr()         {             return "choiceMachine" + this.machineId;         }
+        }
+
+        public void ReloadCostLabel(String costStr)
+        {
+            this.lblChoiceCost.Text = costStr;
+        }
+
+        public string GetImageURLStr()
+        {
+            return "choiceMachine" + this.machineId;
+        }
 
         public int SpinForRandomMonId()
         {

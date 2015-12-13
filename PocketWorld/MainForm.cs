@@ -27,7 +27,7 @@ namespace PocketWorld
                 playerDbConn = myLoginFrm.DbConnector;
             }
 
-            UpdateScreen();
+            InitScreen();
         }
 
         private void PocketWorld_Load(object sender, EventArgs e)
@@ -55,6 +55,21 @@ namespace PocketWorld
             lblOutputNextIncomeValue.Text = (playerDbConn.GetPlayer().IncomeLevel + 1).ToString();
         }
 
+        private void InitScreen()
+        {
+            if (playerDbConn.isPlayerLoaded() == false) return;
+
+            choiceMachinePanel.Controls.Clear();
+            foreach (ChoiceMachine machine in playerDbConn.GetChoiceMachineList())
+            {
+                machine.initContent();
+                choiceMachinePanel.Controls.Add(machine);
+            }
+
+            UpdateLabels();
+            UpdateScreen();
+        }
+
         private void UpdateScreen()
         {
             if (playerDbConn.isPlayerLoaded() == false) return;
@@ -66,7 +81,7 @@ namespace PocketWorld
             foreach (Pocketmon pocketmon in playerDbConn.GetPocketmonList())
             {
                 pocketmon.ReLoadContents();
-                if(pocketmon.PocketmonStatus == 0)
+                if (pocketmon.PocketmonStatus == 0)
                 {
                     libraryPanel.Controls.Add(pocketmon);
                 }
@@ -74,13 +89,6 @@ namespace PocketWorld
                 {
                     pocketmonPanel.Controls.Add(pocketmon);
                 }
-            }
-
-            choiceMachinePanel.Controls.Clear();
-            foreach (ChoiceMachine machine in playerDbConn.GetChoiceMachineList())
-            {
-                machine.ReLoadContents();
-                choiceMachinePanel.Controls.Add(machine);
             }
         }
 

@@ -385,6 +385,10 @@ namespace PocketWorld
                         int randomGeneratedMonsterId = machine.SpinForRandomMonId();
                         pocketmon_id = CreatePlayerPocketmon(randomGeneratedMonsterId);
                         SavePlayer();
+                        LoadPlayerPocketmonList(itsPlayer.Id);
+                        int nextBuyCost = 0;
+                        nextBuyCost = machine.CalculateSpinCost(playerMonCountForMachineRank);
+                        machine.ReloadCostLabel(nextBuyCost.ToString());
                     }
                 }
             }
@@ -453,8 +457,9 @@ namespace PocketWorld
             }
             else
             {
-                MessageBox.Show("구입 실패...");
+                MessageBox.Show("돈없어 돈내놔....");
             }
+            String nextBuyCost = "0";
 
         }
 
