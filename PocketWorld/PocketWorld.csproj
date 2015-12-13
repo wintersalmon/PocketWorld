@@ -69,9 +69,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mob.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="player.cs" />
     <Compile Include="PlayerDBConnectManager.cs" />
     <Compile Include="Pocketmon.cs">

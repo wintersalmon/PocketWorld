@@ -1,7 +1,20 @@
 ﻿using System.Drawing;
 
-namespace PocketWorld {     class Pocketmon : PocketmonViewBox     {         private int pocketmonId;         private int monId;         private string playerId;         private int pocketmonStatus;         private string monName;         private int rank;         private int gainCoin;         private string gainCoinExplanation;
-        private string monExplanation;          public void ReLoadContents()
+namespace PocketWorld
+{
+    class Pocketmon : PocketmonViewBox
+    {
+        private int pocketmonId;
+        private int monId;
+        private string playerId;
+        private int pocketmonStatus;
+        private string monName;
+        private int rank;
+        private int gainCoin;
+        private string gainCoinExplanation;
+        private string monExplanation;
+
+        public void ReLoadContents()
         {
             this.lblName.Text = MonName;
             this.lblRank.Text = Rank.ToString();
@@ -21,11 +34,135 @@ namespace PocketWorld {     class Pocketmon : PocketmonViewBox     {    
             }
             
             this.pictureOutputBox.Image = (Image) Properties.Resources.ResourceManager.GetObject(GetImageURLStr());
-        }          public string GetImageURLStr()         {             if(this.pocketmonStatus == 0)
+        }
+
+        public string GetImageURLStr()
+        {
+            if(this.pocketmonStatus == 0)
             {
                 return "lib" + this.monId;
-            }             else
+            }
+            else
             {
                 return "lib" + this.monId;
-            }         }          public int PocketmonId         {             get             {                 return pocketmonId;             }              set             {                 pocketmonId = value;             }         }          public int MonId         {             get             {                 return monId;             }              set             {                 monId = value;             }         }          public string PlayerId         {             get             {                 return playerId;             }              set             {                 playerId = value;             }         }          public int PocketmonStatus         {             get             {                 return pocketmonStatus;             }              set             {                 pocketmonStatus = value;             }         }          public string MonName         {             get             {                 return monName;             }              set             {                 monName = value;             }         }          public int Rank         {             get             {                 return rank;             }              set             {                 rank = value;             }         }          public int GainCoin         {             get             {                 return gainCoin;             }              set             {                 gainCoin = value;             }         }          public string GainCoinExplanation         {             get             {                 return gainCoinExplanation;             }              set             {                 gainCoinExplanation = value;             }         }          public string MonExplanation         {             get             {                 return monExplanation;             }              set             {                 monExplanation = value;             }         }
-    } }
+            }
+        }
+
+        public int PocketmonId
+        {
+            get
+            {
+                return pocketmonId;
+            }
+
+            set
+            {
+                pocketmonId = value;
+            }
+        }
+
+        public int MonId
+        {
+            get
+            {
+                return monId;
+            }
+
+            set
+            {
+                monId = value;
+            }
+        }
+
+        public string PlayerId
+        {
+            get
+            {
+                return playerId;
+            }
+
+            set
+            {
+                playerId = value;
+            }
+        }
+
+        public int PocketmonStatus
+        {
+            get
+            {
+                return pocketmonStatus;
+            }
+
+            set
+            {
+                pocketmonStatus = value;
+            }
+        }
+
+        public string MonName
+        {
+            get
+            {
+                return monName;
+            }
+
+            set
+            {
+                monName = value;
+            }
+        }
+
+        public int Rank
+        {
+            get
+            {
+                return rank;
+            }
+
+            set
+            {
+                rank = value;
+            }
+        }
+
+        public int GainCoin
+        {
+            get
+            {
+                return gainCoin;
+            }
+
+            set
+            {
+                gainCoin = value;
+            }
+        }
+
+        public string GainCoinExplanation
+        {
+            get
+            {
+                return gainCoinExplanation;
+            }
+
+            set
+            {
+                gainCoinExplanation = value;
+            }
+        }
+
+        public string MonExplanation
+        {
+            get
+            {
+                return monExplanation;
+            }
+
+            set
+            {
+                monExplanation = value;
+            }
+        }
+    }
+}
