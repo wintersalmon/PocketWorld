@@ -46,7 +46,7 @@
             this.pictureOutputBox.Location = new System.Drawing.Point(0, 3);
             this.pictureOutputBox.Name = "pictureOutputBox";
             this.pictureOutputBox.Size = new System.Drawing.Size(150, 177);
-            this.pictureOutputBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureOutputBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureOutputBox.TabIndex = 0;
             this.pictureOutputBox.TabStop = false;
             // 

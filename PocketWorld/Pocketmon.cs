@@ -26,14 +26,17 @@ namespace PocketWorld
             {
                 this.btnLoad.Visible = true;
                 this.btnSave.Visible = false;
+                this.pictureOutputBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             }
             else
             {
                 this.btnLoad.Visible = false;
                 this.btnSave.Visible = true;
+                this.pictureOutputBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             }
             
             this.pictureOutputBox.Image = (Image) Properties.Resources.ResourceManager.GetObject(GetImageURLStr());
+            this.pictureOutputBox.Invalidate();
         }
 
         public string GetImageURLStr()
@@ -44,7 +47,7 @@ namespace PocketWorld
             }
             else
             {
-                return "lib" + this.monId;
+                return "mon" + this.monId;
             }
         }
 

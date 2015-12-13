@@ -123,5 +123,24 @@ namespace PocketWorld
         {
             UpdateScreen();
         }
+
+        private void choiceMachinePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblOutputIncome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblIncome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIncreaseCoin_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
