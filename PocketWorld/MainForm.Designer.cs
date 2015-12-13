@@ -206,7 +206,7 @@
             // choiceMachinePanel
             // 
             this.choiceMachinePanel.AutoScroll = true;
-            this.choiceMachinePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.choiceMachinePanel.BackgroundImage = global::PocketWorld.Properties.Resources.PT3;
             this.choiceMachinePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.choiceMachinePanel.Location = new System.Drawing.Point(3, 3);
             this.choiceMachinePanel.Name = "choiceMachinePanel";
@@ -218,6 +218,7 @@
             // 
             this.pocketmonPanel.AutoScroll = true;
             this.pocketmonPanel.BackColor = System.Drawing.Color.Transparent;
+            this.pocketmonPanel.BackgroundImage = global::PocketWorld.Properties.Resources.PT4;
             this.pocketmonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pocketmonPanel.Location = new System.Drawing.Point(3, 3);
             this.pocketmonPanel.Name = "pocketmonPanel";
@@ -260,6 +261,7 @@
             // libraryPanel
             // 
             this.libraryPanel.AutoScroll = true;
+            this.libraryPanel.BackgroundImage = global::PocketWorld.Properties.Resources.PT2;
             this.libraryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.libraryPanel.Location = new System.Drawing.Point(3, 3);
             this.libraryPanel.Name = "libraryPanel";

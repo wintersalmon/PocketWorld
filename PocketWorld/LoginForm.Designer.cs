@@ -71,6 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PocketWorld.Properties.Resources.backgroundMain;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.btnLogin);
